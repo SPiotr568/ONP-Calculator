@@ -18,7 +18,7 @@ import java.util.EventListener;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Calculator extends JFrame implements Serializable {
+public class Main extends JFrame implements Serializable {
     private JButton b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bResult,bAddition,bSubtraction,bDivision,bMultiplication,bReset,bDot,
                     bModulo,bFactorial,bSqrt,bAttraction,bDelete,bMemory,bBracketLeft,bBracketRight;
     private JFrame window;
@@ -58,7 +58,7 @@ public class Calculator extends JFrame implements Serializable {
 
     */
 
-    public Calculator(){
+    public Main(){
         calculateScreensSize();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window = new JFrame("RPN CalculatorApp");
@@ -286,6 +286,6 @@ public class Calculator extends JFrame implements Serializable {
     }
 
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
+        Main calc = new Main();
     }
 }
