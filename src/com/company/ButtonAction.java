@@ -166,6 +166,7 @@ public class ButtonAction extends JButton implements ActionListener {
                     Calculator.getTextField().setText(Calculator.getTextField().getText() + s);
                 }
                 Calculator.calculateEquation();
+                //serializacja,zapisuje do pliku calcStorage.bin ostatni wynik
                 try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("calcStorage.bin"))) {
                     output.writeObject(Calculator.getTextField().getText()+ "\n");
                 } catch (FileNotFoundException fileNotFoundException) {
@@ -226,8 +227,14 @@ public class ButtonAction extends JButton implements ActionListener {
                     else if(lastChar==d && newChar=='.'){
                         return true;
                     }
+                    else if(lastChar=='!' && newChar=='='){
+                        return true;
+                    }
                     else if(lastChar=='.' && newChar==d){
                         return true;
+                    }
+                    else if(lastChar=='!' && newChar==s){
+                       return true;
                     }
                     else if(lastChar==s && newChar==d){
                         return true;
@@ -238,10 +245,10 @@ public class ButtonAction extends JButton implements ActionListener {
                     else if((lastChar==d || lastChar == ')') &&  newChar=='='){
                         return true;
                     }
-                    else if(lastChar=='R' || lastChar ==d){
+                    else if(lastChar=='R' || newChar ==d){
                         return true;
                     }
-                    else if(lastChar==d || lastChar =='R'){
+                    else if(lastChar==d || newChar =='R'){
                         return true;
                     }
                     else if((lastChar==d || lastChar==')') && newChar==')'){

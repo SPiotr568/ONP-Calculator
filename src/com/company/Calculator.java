@@ -258,14 +258,16 @@ public class Calculator extends JFrame implements Serializable {
 
     public static void calculateEquation(){
         //przesylanie wyrazenia do obliczenia i wyswietlenie wyniku
-        ONP onp = new ONP();
         String rownanieOnp = null;
         String wynik = null;
         String rownanie=text.getText();
+        ConversionONP konwersja =new ConversionONP();
+        CalculateONP onp = new CalculateONP();
         try {
-            rownanieOnp = onp.przeksztalcNaOnp(rownanie);
+            rownanieOnp = konwersja.conversionToONP(rownanie);
+            System.out.println(rownanie);
             System.out.println(rownanieOnp);
-            wynik = onp.obliczOnp(rownanieOnp);
+            wynik = onp.calculate(rownanieOnp);
         } catch(IllegalArgumentException e) {
             //obsluga wyjatkow zwiazanych z wyjsciem poza zakres tablicy
             System.out.println(e.getMessage());
@@ -279,6 +281,7 @@ public class Calculator extends JFrame implements Serializable {
             System.out.println(e.getMessage());
             System.exit(0);
         }
+        //zmiana tla wyrazenia
         text.setFont(new Font("Arial", Font.PLAIN, 20));
         text.setText(text.getText() + rownanieOnp + wynik);
         text.repaint();

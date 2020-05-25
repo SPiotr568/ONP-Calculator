@@ -7,11 +7,12 @@ import java.util.LinkedList;
 public class Stack<T>{
     private LinkedList<T> stack;
     private int capacity;
-    private int size = 0;
+    private int size;
 
     public Stack(int capacity) {
         stack = new LinkedList<T>();
         this.capacity=capacity;
+        size = 0;
     }
 
     public void setSize(int size){
@@ -44,6 +45,17 @@ public class Stack<T>{
         }
         else
             throw new Exception("Stack is full!");
+    }
+
+    public boolean isEmpty(){
+        if(size==0){
+            return true;
+        }
+        return false;
+    }
+
+    public T onTop(){
+        return stack.getLast();
     }
 
     public T pop() throws EmptyStackException {
