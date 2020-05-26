@@ -8,6 +8,9 @@ public class CalculateONP {
         stack=new Stack<String>(100);
     }
 
+    /*
+    Metoda obliczajaca wynik wyrazenia ONP
+     */
     public String calculate(String functionONP) throws Exception {
         this.functionONP=functionONP;
         String result = "";

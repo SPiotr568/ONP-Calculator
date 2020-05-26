@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ProjectCalculator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjectCalculator_jar</output-path>
+    <root id="archive" name="ProjectCalculator.jar">
+      <element id="module-output" name="ProjectCalculator" />
+    </root>
+  </artifact>
+</component>
