@@ -202,6 +202,9 @@ public class ButtonAction extends JButton implements ActionListener {
         }
     }
 
+    /*
+    Metoda ktora sprawdza czy kolejny znak moze zostac dodany
+     */
     public boolean checktIfCorrect(String toAdd){
         char [] digit = {'0','1','2','3','4','5','6','7','8','9'};
         char [] sign = {'*','^','/','-','%','+','!'};
@@ -245,14 +248,14 @@ public class ButtonAction extends JButton implements ActionListener {
                     else if((lastChar==d || lastChar == ')') &&  newChar=='='){
                         return true;
                     }
-                    else if(lastChar=='R' || newChar ==d){
+                    else if(lastChar=='R' && newChar ==d){
                         return true;
                     }
-                    else if(lastChar==d || newChar =='R'){
+                    else if(lastChar==d && newChar =='R'){
                         return true;
                     }
-                    else if((lastChar==d || lastChar==')') && newChar==')'){
-                        for(int i=0;i<str.length()-1;i++){
+                    else if((lastChar==d || lastChar==')' || lastChar == '!') && newChar==')'){
+                        for(int i=0;i<str.length();i++){
                             if(str.charAt(i)=='('){
                                 nLeftBrucket++;
                             }
@@ -260,7 +263,6 @@ public class ButtonAction extends JButton implements ActionListener {
                                 nRightBrucket++;
                             }
                         }
-                        System.out.println(nLeftBrucket+":"+nRightBrucket);
                         if(nLeftBrucket>nRightBrucket) {
                             return true;
                         }

@@ -53,12 +53,8 @@ public class CalculateONP {
                     case ("/"): {
                         y = Double.parseDouble(stack.pop());
                         x = Double.parseDouble(stack.pop());
-                        try {
-                            if (y.equals(0))
-                                throw new java.lang.IllegalArgumentException("Nie można dzielic przez 0!");
-                        } catch (IllegalArgumentException e) {
-                            System.out.println(e.getMessage());
-                            System.exit(0);
+                        if (y.equals(0)) {
+                            throw new java.lang.IllegalArgumentException("Nie można dzielic przez 0!");
                         }
                         stack.push(String.valueOf(Dzielenie.oblicz(x,y)));
                         break;

@@ -35,7 +35,7 @@ public class Calculator extends JFrame implements Serializable {
 
         +---------------------+   y:
         |+-------------------+|
-        ||       rownanie    ||
+        || rownanie          ||
         |+-------------------+|
         |   C   <-  M   *   ^ |    1
         |   7   8   9   /   R |    2
@@ -54,7 +54,7 @@ public class Calculator extends JFrame implements Serializable {
         ^ - potegowanie
         / - dzielenie
         M - memory (odczytanie ostatniego oblicznonego wyrazenia)
-        po obliczeniu wyniku zostaje on (wyrazenie + wyrazenie ONP + wynik) zapisany do pliku za pomoca serializacja
+        po obliczeniu wyniku zostaje on (wyrazenie + wyrazenie ONP + wynik) zapisany do pliku za pomoca serializacji
 
     */
 
@@ -256,6 +256,9 @@ public class Calculator extends JFrame implements Serializable {
         return text;
     }
 
+    /*
+    Metoda ktora zamienia wyrazenie na ONP i oblicza
+     */
     public static void calculateEquation(){
         //przesylanie wyrazenia do obliczenia i wyswietlenie wyniku
         String rownanieOnp = null;
@@ -265,19 +268,20 @@ public class Calculator extends JFrame implements Serializable {
         CalculateONP onp = new CalculateONP();
         try {
             rownanieOnp = konwersja.conversionToONP(rownanie);
-            System.out.println(rownanie);
-            System.out.println(rownanieOnp);
             wynik = onp.calculate(rownanieOnp);
         } catch(IllegalArgumentException e) {
             //obsluga wyjatkow zwiazanych z wyjsciem poza zakres tablicy
+            text.setText(text.getText() + "Error");
             System.out.println(e.getMessage());
             System.exit(0);
         } catch(ArrayIndexOutOfBoundsException arre) {
             //obsluga wyjatkow zwiazanych z wyjsciem poza zakres tablicy
+            text.setText(text.getText() + "Error");
             System.out.println(arre.getMessage());
             System.exit(0);
         } catch(Exception e) {
             //obsluga wyjatkow innych
+            text.setText(text.getText() + "Error");
             System.out.println(e.getMessage());
             System.exit(0);
         }

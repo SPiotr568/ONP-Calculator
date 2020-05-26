@@ -30,12 +30,14 @@ public class ConversionONP {
 
     /*
     Metoda do konwersji wyrazenia na ONP
-
     @param startFunction - wyrazenie przed konwersja
     @return zwraca wyrażenie ktore zostalo poddane transformacji na ONP
      */
     public String conversionToONP(String startFunction) {
         this.startFunction=startFunction;
+        if(startFunction.charAt(startFunction.length()-1)!='='){
+            return "BLAD! Brak znaku '=' na koncu";
+        }
         Double a = 0.0;
         Double b = 0.0;
         String newChar;
